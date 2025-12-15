@@ -1,0 +1,334 @@
+.create-test-page {
+    padding: var(--spacing-lg) 0;
+    min-height: calc(100vh - 100px);
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-header h1 {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.test-form {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.test-info-section {
+    padding: var(--spacing-lg);
+}
+
+.test-info-section h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.bulk-import-section {
+    padding: var(--spacing-lg);
+}
+
+.bulk-import-section h2 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.bulk-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.file-upload-btn {
+    cursor: pointer;
+}
+
+.demo-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-md);
+}
+
+.demo-section h3 {
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.json-example {
+    background: rgba(0, 0, 0, 0.5);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    color: #A5D6A7;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.demo-section .alert {
+    margin-top: var(--spacing-md);
+}
+
+.demo-section ul {
+    margin: var(--spacing-sm) 0 0 var(--spacing-lg);
+    list-style-type: disc;
+}
+
+.demo-section li {
+    margin: var(--spacing-xs) 0;
+}
+
+.demo-section code {
+    background: rgba(99, 102, 241, 0.2);
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm);
+    color: var(--primary-light);
+    font-family: monospace;
+    font-size: 0.875rem;
+}
+
+.ai-extract-section {
+    padding: var(--spacing-lg);
+}
+
+.ai-extract-section h2 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.ai-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.camera-section {
+    width: 100%;
+}
+
+.camera-preview {
+    width: 100%;
+    max-width: 640px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.camera-controls {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.ai-loading {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.ai-loading p {
+    margin-top: var(--spacing-md);
+    color: var(--primary-light);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--spacing-md);
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.close-btn:hover {
+    color: var(--error);
+}
+
+.preview-questions {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.preview-question-card {
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.preview-question-card h4 {
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.preview-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.preview-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.preview-option input[type="radio"] {
+    width: auto;
+}
+
+.preview-option input[type="text"] {
+    flex: 1;
+}
+
+.modal-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.questions-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.questions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.question-card {
+    padding: var(--spacing-lg);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.question-header h3 {
+    color: var(--primary-light);
+    margin: 0;
+}
+
+.options-grid {
+    display: grid;
+    gap: var(--spacing-sm);
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.option-group label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.option-group input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+.option-group input[type="text"] {
+    width: 100%;
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    margin-top: var(--spacing-md);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+@media (max-width: 768px) {
+    .questions-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-sm);
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .bulk-actions {
+        flex-direction: column;
+    }
+
+    .bulk-actions button,
+    .bulk-actions label {
+        width: 100%;
+    }
+}

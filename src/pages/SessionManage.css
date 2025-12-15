@@ -1,0 +1,59 @@
+.session-manage-page {
+    padding: var(--spacing-lg) 0;
+    min-height: calc(100vh - 100px);
+}
+
+.mode-selector {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.mode-btn {
+    padding: 0.75rem 2rem;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.mode-btn:hover {
+    transform: translateY(-2px);
+}
+
+.session-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.session-form h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+    .mode-selector {
+        flex-direction: column;
+    }
+
+    .mode-btn {
+        width: 100%;
+    }
+}

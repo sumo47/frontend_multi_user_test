@@ -1,0 +1,140 @@
+.new-session-page {
+    padding: var(--spacing-lg) 0;
+    min-height: calc(100vh - 100px);
+}
+
+.session-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .session-form-container {
+        padding: var(--spacing-md);
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+/* Custom Searchable Select */
+.custom-select-container {
+    position: relative;
+    z-index: 100 !important;
+    /* Ensure it stays on top */
+}
+
+/* Ensure form container sits above the overlay */
+.session-form-container {
+    position: relative;
+    z-index: 50;
+}
+
+.searchable-select {
+    position: relative;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.arrow-icon {
+    position: absolute;
+    right: 15px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.arrow-icon.open {
+    transform: rotate(180deg);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 250px;
+    overflow-y: auto;
+    background: #1e293b;
+    /* Solid background */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-top: 5px;
+    z-index: 1000;
+    /* Highest priority */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s;
+}
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option:hover,
+.dropdown-option.selected {
+    background: rgba(99, 102, 241, 0.2);
+    border-left: 3px solid var(--primary);
+}
+
+.option-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.option-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.no-options {
+    padding: 15px;
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.click-outside-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    /* Lower than form (50) but higher than background */
+    background: rgba(0, 0, 0, 0.1);
+    cursor: default;
+}
+
+.search-input {
+    padding-right: 35px !important;
+}
