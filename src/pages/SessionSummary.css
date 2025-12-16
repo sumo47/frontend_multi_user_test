@@ -1,6 +1,6 @@
 .session-summary-page {
     padding: var(--spacing-lg) 0;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 80px);
 }
 
 .summary-header {
@@ -14,6 +14,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: var(--spacing-sm);
+    font-size: 2.25rem;
 }
 
 .session-info {
@@ -24,17 +25,23 @@
     font-size: 1.25rem;
     color: var(--text-primary);
     margin-bottom: var(--spacing-xs);
+    font-weight: 600;
 }
 
 .session-code {
     color: var(--text-secondary);
-    font-family: monospace;
+    font-family: var(--font-main);
     font-size: 1rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    display: inline-block;
 }
 
 .summary-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: var(--spacing-lg);
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
@@ -45,7 +52,7 @@
 }
 
 .stat .stat-value {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary-light);
     margin-bottom: var(--spacing-xs);
@@ -54,7 +61,7 @@
 .stat .stat-label {
     color: var(--text-secondary);
     text-transform: uppercase;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     letter-spacing: 0.05em;
 }
 
@@ -78,25 +85,36 @@
 .participant-row {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     padding: var(--spacing-lg);
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
 }
 
 .participant-row:hover {
-    transform: translateX(8px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .participant-row.first-place {
-    border: 2px solid gold;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(255, 215, 0, 0.01) 100%);
 }
 
 .rank {
     font-size: 2rem;
-    font-weight: 700;
-    min-width: 60px;
+    font-weight: 800;
+    min-width: 50px;
     text-align: center;
+    color: var(--text-muted);
+}
+
+.participant-row.first-place .rank {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .participant-details {
@@ -104,20 +122,21 @@
 }
 
 .participant-name {
-    font-weight: 600;
-    font-size: 1.125rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     color: var(--text-primary);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
 }
 
 .participant-email {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
 }
 
 .participant-stats {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-xl);
 }
 
 .score-display {
@@ -127,34 +146,36 @@
 }
 
 .score-number {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-light);
 }
 
 .score-total {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--text-secondary);
 }
 
 .percentage {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
-    min-width: 80px;
-    text-align: center;
+    min-width: 60px;
+    text-align: right;
 }
 
 .breakdown {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    min-width: 80px;
+    min-width: 70px;
 }
 
 .breakdown span {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
+    display: flex;
+    gap: 0.25rem;
 }
 
 .summary-actions {
@@ -165,22 +186,45 @@
 @media (max-width: 768px) {
     .participant-row {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         text-align: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .participant-details {
+        width: 100%;
     }
 
     .rank {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
+        margin-bottom: -0.5rem;
     }
 
     .participant-stats {
-        flex-direction: column;
-        gap: var(--spacing-sm);
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--spacing-lg);
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .score-display,
+    .percentage,
+    .breakdown {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: auto;
     }
 
     .breakdown {
         flex-direction: row;
-        justify-content: center;
         gap: var(--spacing-md);
+    }
+
+    .summary-stats {
+        grid-template-columns: 1fr 1fr;
     }
 }

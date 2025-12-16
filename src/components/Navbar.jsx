@@ -1,10 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useState, useEffect } from 'react';
 import './Navbar.css';
 
 const Navbar = () => {
     const { user, logout, isAuthenticated } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Close menu when route changes
+    useEffect(() => {
+        setIsMenuOpen(false);
+    }, [location]);
 
     const handleLogout = () => {
         logout();
@@ -22,13 +30,26 @@ const Navbar = () => {
                         MCQ Test System
                     </Link>
 
-                    <div className="navbar-user">
-                        <Link to="/profile" className="user-profile-link">
-                            👤 {user?.username ? `@${user.username}` : user?.name}
-                        </Link>
-                        <button onClick={handleLogout} className="btn btn-outline btn-sm">
-                            Logout
-                        </button>
+                    <button
+                        className="navbar-toggle"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle navigation"
+                    >
+                        <span className={`hamburger ${isMenuOpen ? 'active' : ''}`}></span>
+                    </button>
+
+                    <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+                        <div className="navbar-user">
+                            <span className="user-greeting mobile-only">
+                                Hello, {user?.name?.split(' ')[0]}
+                            </span>
+                            <Link to="/profile" className="user-profile-link">
+                                👤 Profile
+                            </Link>
+                            <button onClick={handleLogout} className="btn btn-outline btn-sm">
+                                Logout
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

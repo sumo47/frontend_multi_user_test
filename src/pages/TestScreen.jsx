@@ -46,6 +46,7 @@ const TestScreen = () => {
                 setUserAttempt(attemptData);
                 setRemainingTime(sessionData.remainingTime);
                 setLoading(false);
+                setError(''); // Clear any previous transient errors
 
                 // Load existing answers
                 if (attemptData && attemptData.answers) {

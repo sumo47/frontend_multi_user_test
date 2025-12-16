@@ -1,20 +1,25 @@
 .home-page {
-    padding: var(--spacing-xl) 0;
-    min-height: calc(100vh - 100px);
+    padding: var(--spacing-lg) 0;
+    min-height: calc(100vh - 80px);
+    /* Adjust for navbar */
+    position: relative;
+    z-index: 2;
 }
 
 .home-hero {
     text-align: center;
     margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-sm);
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: var(--spacing-sm);
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    line-height: 1.1;
 }
 
 .hero-subtitle {
@@ -26,13 +31,15 @@
 
 .active-session-banner {
     margin: var(--spacing-xl) 0;
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
     display: flex;
     align-items: center;
     gap: var(--spacing-lg);
     background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
-    border: 2px solid var(--warning);
-    animation: pulse 2s ease-in-out infinite;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-xl);
+    animation: pulse 3s ease-in-out infinite;
+    backdrop-filter: blur(10px);
 }
 
 .banner-icon {
@@ -47,17 +54,19 @@
 .banner-content h3 {
     color: var(--warning);
     margin: 0 0 var(--spacing-xs) 0;
+    font-size: 1.25rem;
 }
 
 .banner-content p {
     margin: 0.25rem 0;
+    color: var(--text-primary);
 }
 
 @keyframes pulse {
 
     0%,
     100% {
-        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.2);
     }
 
     50% {
@@ -76,16 +85,30 @@
     padding: var(--spacing-xl);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .action-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px var(--shadow);
+    border-color: var(--primary);
 }
 
 .action-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .action-card h3 {
@@ -95,7 +118,8 @@
 
 .action-card p {
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
 }
 
 .info-section {
@@ -112,6 +136,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
 }
 
 .step {
@@ -119,15 +144,15 @@
 }
 
 .step-number {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     margin: 0 auto var(--spacing-sm);
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
@@ -144,19 +169,54 @@
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
+    .home-page {
+        padding: var(--spacing-md) 0;
     }
 
-    .hero-subtitle {
-        font-size: 1rem;
+    .active-session-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: var(--spacing-md);
+    }
+
+    .banner-icon {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .active-session-banner .btn {
+        width: 100%;
+        margin-top: var(--spacing-sm);
     }
 
     .action-grid {
         grid-template-columns: 1fr;
+        padding: 0 var(--spacing-xs);
     }
 
     .steps-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        position: relative;
+    }
+
+    /* Add a connecting line for steps on mobile */
+    .steps-grid::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 0;
+    }
+
+    .step {
+        position: relative;
+        z-index: 1;
+        background: var(--surface);
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-color);
     }
 }

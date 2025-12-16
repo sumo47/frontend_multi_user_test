@@ -4,36 +4,45 @@
     align-items: center;
     justify-content: center;
     padding: var(--spacing-md);
+    position: relative;
+    z-index: 2;
 }
 
 .auth-container {
     width: 100%;
     max-width: 450px;
+    margin: 0 auto;
 }
 
 .auth-card {
+    /* Background handled by card-glass class */
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
     padding: var(--spacing-xl);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
 }
 
 .auth-title {
     text-align: center;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
+    font-size: 2rem;
+    margin-bottom: var(--spacing-xs);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--spacing-xs);
 }
 
 .auth-subtitle {
     text-align: center;
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    font-size: 0.95rem;
 }
 
 .auth-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
 }
 
 .form-group {
@@ -47,28 +56,57 @@
     color: var(--text-secondary);
     font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
 }
 
+/* Auth specific buttons override if needed, but inheriting from index.css is better */
 .btn-block {
     width: 100%;
     margin-top: var(--spacing-sm);
+    padding: 1rem;
 }
 
 .auth-footer {
     text-align: center;
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
     color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
 .auth-link {
-    color: var(--primary-light);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
+    margin-left: 0.25rem;
 }
 
 .auth-link:hover {
-    color: var(--primary);
+    color: var(--primary-light);
     text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .auth-page {
+        padding: var(--spacing-sm);
+        align-items: flex-start;
+        padding-top: 4rem;
+        /* Give some space from top */
+    }
+
+    .auth-card {
+        padding: var(--spacing-lg);
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .auth-container {
+        max-width: 100%;
+    }
+
+    .auth-title {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-md);
+    }
 }

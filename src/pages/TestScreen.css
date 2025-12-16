@@ -1,17 +1,20 @@
 .test-screen-page {
     min-height: 100vh;
-    padding-bottom: var(--spacing-xl);
+    padding-bottom: 100px;
+    /* Space for fixed bottom bar if needed, or just scrolling */
 }
 
+/* Compact Sticky Header */
 .test-header {
-    background: rgba(30, 41, 59, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-sm) 0;
     position: sticky;
     top: 0;
-    z-index: 50;
-    box-shadow: 0 4px 6px var(--shadow);
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header-content {
@@ -23,7 +26,18 @@
 
 .test-title h2 {
     margin: 0;
+    font-size: 1.25rem;
     color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+.test-title p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 .timer-section {
@@ -33,99 +47,137 @@
 }
 
 .timer {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-md);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    font-family: monospace;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    min-width: 140px;
+    font-family: var(--font-main);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    min-width: 100px;
     text-align: center;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .timer-warning {
-    background: linear-gradient(135deg, var(--error) 0%, var(--accent) 100%);
-    animation: pulse 1.5s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--error) 0%, #b91c1c 100%);
+    animation: pulse 1s ease-in-out infinite;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
 }
 
+/* Question Cards */
 .questions-container {
     margin-top: var(--spacing-lg);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
 }
 
 .question-box {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--border-color);
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
 }
 
 .question-number {
     display: inline-block;
-    background: var(--primary);
-    color: white;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary-light);
     padding: 0.25rem 0.75rem;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 .question-text {
+    font-size: 1.25rem;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
+    font-weight: 600;
 }
 
+/* Options with large touch targets */
 .options-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
 }
 
 .option-label {
     display: flex;
-    align-items: center;
-    padding: var(--spacing-md);
+    align-items: flex-start;
+    /* Align top for long text */
+    padding: 1rem;
     border: 2px solid var(--border-color);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: all 0.3s ease;
-    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+}
+
+/* Hide native radio */
+.option-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .option-label:hover {
-    border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--primary-light);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .option-label.selected {
     border-color: var(--primary);
-    background: rgba(99, 102, 241, 0.2);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-.option-label input[type="radio"] {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    margin-right: var(--spacing-md);
-    cursor: pointer;
+    background: rgba(99, 102, 241, 0.15);
+    box-shadow: 0 0 0 1px var(--primary), 0 4px 12px rgba(99, 102, 241, 0.2);
+    transform: translateY(-2px);
 }
 
 .option-text {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+    align-items: flex-start;
+    gap: var(--spacing-md);
     flex: 1;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     font-size: 1rem;
+    line-height: 1.5;
+}
+
+.option-label.selected .option-text {
+    color: white;
+    font-weight: 500;
 }
 
 .option-letter {
     font-weight: 700;
-    color: var(--primary-light);
-    min-width: 30px;
+    color: var(--text-muted);
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    margin-top: 2px;
+    /* Visual alignment */
+}
+
+.option-label.selected .option-letter {
+    background: var(--primary);
+    color: white;
 }
 
 .submit-section {
@@ -135,18 +187,75 @@
     margin-right: auto;
 }
 
+/* Mobile Optimizations */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        align-items: stretch;
+    .test-header {
+        padding: 0.5rem 0;
     }
 
-    .timer-section {
-        justify-content: space-between;
+    .header-content {
+        gap: 0.5rem;
+    }
+
+    /* Stack header logic for very small screens, 
+       but keep timer prominent */
+    .test-title h2 {
+        font-size: 1rem;
+        max-width: 150px;
+    }
+
+    .test-title p {
+        font-size: 0.75rem;
     }
 
     .timer {
-        font-size: 1.25rem;
-        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 80px;
     }
+
+    .timer-section .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .question-box {
+        padding: var(--spacing-lg);
+        border-radius: 0;
+        /* Full bleed on small mobile? Maybe keeping radius is better */
+        border-radius: var(--radius-lg);
+    }
+
+    .questions-container {
+        gap: var(--spacing-lg);
+    }
+
+    .question-text {
+        font-size: 1.1rem;
+    }
+
+    .option-label {
+        padding: 0.875rem;
+    }
+
+    .submit-section {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+
+    .header-content {
+        flex-wrap: wrap;
+        /* Allow wrapping if needed */
+    }
+
+    /* Make submit button fixed bottom for easy access? 
+       Maybe risky if it covers content. 
+       Let's keep it static for now but large. 
+    */
 }

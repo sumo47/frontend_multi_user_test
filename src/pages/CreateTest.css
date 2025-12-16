@@ -267,15 +267,60 @@
     margin: 0;
 }
 
+/* ... existing styles ... */
+
+/* Global Input Styles for CreateTest */
+.test-form input[type="text"],
+.test-form input[type="number"],
+.test-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.test-form input[type="text"]:focus,
+.test-form input[type="number"]:focus,
+.test-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.test-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Option Inputs specific tweaks */
 .options-grid {
     display: grid;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
 }
 
 .option-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xs);
+    background: rgba(255, 255, 255, 0.02);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.option-group:focus-within {
+    border-color: var(--primary-glow);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .option-group label {
@@ -284,28 +329,15 @@
     gap: var(--spacing-xs);
     font-weight: 600;
     color: var(--text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+    cursor: pointer;
 }
 
 .option-group input[type="radio"] {
-    width: auto;
-    margin: 0;
-}
-
-.option-group input[type="text"] {
-    width: 100%;
-}
-
-.form-actions {
-    display: flex;
-    gap: var(--spacing-md);
-    justify-content: flex-end;
-    margin-top: var(--spacing-md);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: var(--primary);
 }
 
 @media (max-width: 768px) {
